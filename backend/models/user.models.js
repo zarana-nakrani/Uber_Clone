@@ -20,9 +20,13 @@ const userSchema = mongoose.Schema({
         unique: true,
         minlength: [5, 'email should be atleast 5 characters long']
     },
+    //when we send a request to fetch user data using email, select: false will not bring the password from the database
+    //but when we create a new user, we need to hash the password and save it in the database
     password: {
         type: String,
-        required: true
+        required: true,
+        select: false,
+        minlength: [6, 'Password should be atleast 6 characters long'],
     },
     socketId: {
         type: String,
