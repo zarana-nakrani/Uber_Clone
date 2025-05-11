@@ -42,7 +42,7 @@ module.exports.loginUser = async(req, res, next) => {
 
     res.cookie('token', token)
 
-    res.status(200).json({token, user});
+    return res.status(200).json({token, user});
 }
 
 module.exports.getUserProfile = async(req, res,  next) => {
@@ -50,8 +50,8 @@ module.exports.getUserProfile = async(req, res,  next) => {
 }
 
 module.exports.logoutUser = async(req, res, next) => {
-    res.clearCookie('token');
     const token = req.cookies?.token || req.headers.authorization?.split(' ')[1];
+    res.clearCookie('token');
 
     await blacklistTokenModel.create({token});
     return res.status(200).json({message: 'Logged out successfully'})
