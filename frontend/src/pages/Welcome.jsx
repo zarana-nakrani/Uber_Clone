@@ -6,6 +6,7 @@ import 'remixicon/fonts/remixicon.css'
 import LocationSearchPanel from '../components/LocationSearchPanel'
 import VehiclePanel from '../components/VehiclePanel'
 import ConfirmedRide from '../components/ConfirmedRide'
+import ConfirmRidePopUp from '../components/ConfirmRidePopUp'
 
 const Welcome = () => {
   const [pickup, setPickup] = useState('')
