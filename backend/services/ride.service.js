@@ -43,6 +43,8 @@ module.exports.createRide =  async(userId, pickup, destination, vehicleType) => 
             vehicleType
         })
 
+        return ride
+
 
         
     } catch (error) {
