@@ -36,8 +36,8 @@ module.exports.getDistanceTime = async (origin, destination) => {
                 throw new Error('No route found between the origin and destination');
             }
 
-            const distance = response.data.rows[0].elements[0].distance.text;
-            const duration = response.data.rows[0].elements[0].duration.text;
+            const distance = response.data.rows[0].elements[0].distance.value / 1000; // Convert to kilometers
+            const duration = response.data.rows[0].elements[0].duration.value / 60; // Convert to minutes
             return {
                 distance,
                 duration

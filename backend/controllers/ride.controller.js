@@ -2,7 +2,7 @@ const rideService = require('../services/ride.service');
 const {validationResult} = require('express-validator');
 const rideSchema = require('../models/ride.model')
 
-module.export.createRide = async (req, res, next) => {
+module.exports.createRide = async (req, res, next) => {
 
     const errors = validationResult(req);
 
@@ -11,12 +11,12 @@ module.export.createRide = async (req, res, next) => {
     }
     const userId = req.user
     const {pickup, destination, vehicleType} = req.body
-
-    const ride = await rideService.createRide(pickup, destination, vehicleType);
-    
-    res.status(201).json({message: 'Ride created'})
-
-    
-
+    try {
+        const ride = await rideService.createRide(req.user._id, pickup, destination, vehicleType);
+        
+        res.status(201).json({ride})
+    } catch (error) {
+        res.status(500).json({message: error.message})
+    }
 
 }

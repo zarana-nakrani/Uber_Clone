@@ -11,9 +11,9 @@ router.post('/create-ride',
     body('vehicleType').isString().isLength({min: 3}).withMessage('vehicle type is required'),
      rideController.createRide);
      
-router.get('/get-ride/:id', rideController.getRide);
-router.get('/get-all-rides', rideController.getAllRides);
-router.put('/update-ride/:id', rideController.updateRide);
-router.delete('/delete-ride/:id', rideController.deleteRide);
+// router.get('/get-ride/:id', rideController.getRide);
+// router.get('/get-all-rides', rideController.getAllRides);
+// router.put('/update-ride/:id', rideController.updateRide);
+// router.delete('/delete-ride/:id', rideController.deleteRide);
 
 module.exports = router;
